@@ -1,0 +1,124 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Temperature Table</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1>Temperature Table</h1>
+    <div class="container">
+      <div class="well well-lg">
+	<form class="form-inline" action="" method="POST">
+	  {% for field in form %}
+	  <div class="form-group">
+	    <label for="{{field.name}}">{{field.label}}:</label>
+	    {% csrf_token %}
+	    {{field|add_class:"form-control"}}
+	  </div>
+	  {% endfor %}
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+      </div>
+    </div>
+    
+    <table class="table table-hover">
+      <thead>
+	<tr>
+          <th>Country</th>
+          <th>Year</th>
+	  <th></th>
+          <th>Jan</th>
+	  <th>Feb</th>
+	  <th>Mar</th>
+	  <th>Apr</th>
+	  <th>May</th>
+	  <th>Jun</th>
+	  <th>Jul</th>
+	  <th>Aug</th>
+	  <th>Sep</th>
+	  <th>Octu</th>
+	  <th>Nov</th>
+	  <th>Dec</th>
+	  <th>Win</th>
+	  <th>Spr</th>
+	  <th>Sumr</th>
+	  <th>Ann</th>
+	  
+	</tr>
+      </thead>
+      {% for tuple1,tuple2,tuple3 in obj %}
+      <tr>
+	<td><a href="/chart/{{tuple1.cid}}/">{{tuple1.cid}}</td>
+	<td><a href="/chart/{{tuple1.cid}}/{{tuple1.year}}">{{tuple1.year}}</a></td>
+	<td>MinTemp</td>
+	<td>{{tuple1.jan}}</td>
+	<td>{{tuple1.feb}}</td>
+	<td>{{tuple1.mar}}</td>
+	<td>{{tuple1.apr}}</td>
+	<td>{{tuple1.may}}</td>
+	<td>{{tuple1.jun}}</td>
+	<td>{{tuple1.jul}}</td>
+	<td>{{tuple1.aug}}</td>
+	<td>{{tuple1.sep}}</td>
+	<td>{{tuple1.octu}}</td>
+	<td>{{tuple1.nov}}</td>
+	<td>{{tuple1.dec}}</td>
+	<td>{{tuple1.win}}</td>
+	<td>{{tuple1.spr}}</td>
+	<td>{{tuple1.sumr}}</td>
+	<td>{{tuple1.ann}}</td>
+      </tr>
+      
+      <tr>
+	<td></td>
+	<td></td>
+	<td>MaxTemp</td>
+	<td>{{tuple2.jan}}</td>
+	<td>{{tuple2.feb}}</td>
+	<td>{{tuple2.mar}}</td>
+	<td>{{tuple2.apr}}</td>
+	<td>{{tuple2.may}}</td>
+	<td>{{tuple2.jun}}</td>
+	<td>{{tuple2.jul}}</td>
+	<td>{{tuple2.aug}}</td>
+	<td>{{tuple2.sep}}</td>
+	<td>{{tuple2.octu}}</td>
+	<td>{{tuple2.nov}}</td>
+	<td>{{tuple2.dec}}</td>
+	<td>{{tuple2.win}}</td>
+	<td>{{tuple2.spr}}</td>
+	<td>{{tuple2.sumr}}</td>
+	<td>{{tuple2.ann}}</td>
+      </tr>
+
+      <tr>
+	<td></td>
+	<td></td>
+	<td>MeanTemp</td>
+	<td>{{tuple3.jan}}</td>
+	<td>{{tuple3.feb}}</td>
+	<td>{{tuple3.mar}}</td>
+	<td>{{tuple3.apr}}</td>
+	<td>{{tuple3.may}}</td>
+	<td>{{tuple3.jun}}</td>
+	<td>{{tuple3.jul}}</td>
+	<td>{{tuple3.aug}}</td>
+	<td>{{tuple3.sep}}</td>
+	<td>{{tuple3.octu}}</td>
+	<td>{{tuple3.nov}}</td>
+	<td>{{tuple3.dec}}</td>
+	<td>{{tuple3.win}}</td>
+	<td>{{tuple3.spr}}</td>
+	<td>{{tuple3.sumr}}</td>
+	<td>{{tuple3.ann}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </body>
+</html>

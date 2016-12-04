@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+  </head>
+
+  <body>
+
+    <div class="container" style="height:800px;width:600px">
+    <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <script>
+      var data = {
+      labels : ["January","February","March",
+      "April","May","June",
+      "July","Agost","September",
+      "October","November","December"],
+      
+      datasets : [
+      {
+      label: "Minimum Temperature",
+      fillColor : "rgba(252,233,79,0.5)",
+      strokeColor : "rgba(82,75,25,1)",
+      pointColor : "rgba(166,152,51,1)",
+      pointStrokeColor : "#fff",
+      //data : [65,68,75,81,95,105,130,120,105,90,75,70]
+      data:{{data_min}}
+      },
+      {
+      label: "Maximum Temperature",
+      fillColor : "rgba(252,233,79,0.5)",
+      strokeColor : "rgba(82,75,25,1)",
+      pointColor : "rgba(166,152,51,1)",
+      pointStrokeColor : "#fff",
+      //data : [65,68,75,81,95,105,130,120,105,90,75,70]
+      data:{{data_max}}
+      },
+      {
+      label: "Mean Temperature",
+      fillColor : "rgba(252,233,79,0.5)",
+      strokeColor : "rgba(82,75,25,1)",
+      pointColor : "rgba(166,152,51,1)",
+      pointStrokeColor : "#fff",
+      //data : [65,68,75,81,95,105,130,120,105,90,75,70]
+      data:{{data_mean}}
+      }
+
+      ]}
+      
+      var options={					
+      };
+
+
+      //Get context with jQuery - using jQuery's .get() method.
+      var ctx = $("#myChart").get(0).getContext("2d");
+
+
+      //new Chart(ctx).Line(data,options);
+      var myNewChart = new Chart(ctx , {
+      type: "line",
+      data: data, 
+      });
+
+    </script>
+    {{data}}
+    
+  </body>
+
+</html>
