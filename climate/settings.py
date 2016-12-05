@@ -29,7 +29,7 @@ SECRET_KEY = 'f*^9@tbn0t9$raeub+6j*m-@%rz#-4^j5w0!+r-bz@2ki$z!o_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [peaceful-castle-37339.herokuapp.com]
 
 
 # Application definition
