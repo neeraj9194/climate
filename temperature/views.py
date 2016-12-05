@@ -32,7 +32,7 @@ def store_txt(url,country,table):
             date_obj,date_created=models.Year.objects.get_or_create(year=data[0])
             obj2,created2=table.objects.update_or_create(cid=obj,year=date_obj,defaults={'jan':data[1],'feb':data[2],'mar':data[3],'apr':data[4],'may':data[4],'jun':data[6],'jul':data[7],'aug':data[8],'sep':data[9],'octu':data[10],'nov':data[11],'dec':data[12],'win':data[13],'spr':data[14],'sumr':data[15],'aut':data[16],'ann':data[17]})
                 
-        print(obj,obj2,created2)
+        #print(obj,obj2,created2)
     
 def get_data():
     url='http://www.metoffice.gov.uk/climate/uk/summaries/datasets'
@@ -61,7 +61,7 @@ def get_data():
             else:
                 url_txt.append(col.find('a').get('href'))
             col_count+=1
-        print(url_txt)
+        #print(url_txt)
         for i in range(5):
             store_txt(url_txt[i],country,temp[i])
             
@@ -113,5 +113,5 @@ def chart(request,year=None,country=None):
         return render(request,'temperature/chart.html',{'data_min':list(float(i) for i in ch1[0]),'data_max':list(float(i) for i in ch2[0]),'data_mean':list(float(i) for i in ch3[0])})
     else:
         ch1=models.MinTemp.objects.filter(cid__country=country).all().aggregate(Avg("jan"),Avg('feb'))
-        print(ch1)
+        #print(ch1)
         return render(request,'temperature/chart.html',{'data_min':ch1})
