@@ -68,6 +68,7 @@ def get_data():
 def index(request):        
     if request.method=='POST' and request.POST['flag']:
         get_data()
+        form=forms.FilterForm()
 
     elif request.method=='POST':
         form=forms.FilterForm(request.POST)
