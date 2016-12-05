@@ -44,7 +44,7 @@ def get_data():
     temp=[models.MaxTemp,models.MinTemp,models.MeanTemp,models.Sunshine,models.Rainfall]
     for row in table:
         #print(len(row))
-        if row_count>4 and row_count<3:
+        if row_count>4:
             break
         row_count+=1
         col_count=0
