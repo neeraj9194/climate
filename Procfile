@@ -1,1 +1,1 @@
-web: gunicorn kranzaa.wsgi --log-file -
+web: gunicorn climate.wsgi --log-file -
